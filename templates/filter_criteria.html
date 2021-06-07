@@ -1,0 +1,452 @@
+{% extends 'base.html' %}
+
+{% block scripts %}
+
+<script type="text/javascript">
+    function ShowHideMagDiv() {
+        var ddlMag = document.getElementById("magnitudeRelationSelect");
+        var dvMagRange = document.getElementById("magRangeDiv");
+        var dvMagValue = document.getElementById("magValueDiv");
+        dvMagRange.style.display = ddlMag.value == "between" ? "block" : "none";
+        dvMagValue.style.display = ddlMag.value == "between" ? "none" : "block";
+    }
+
+    function ShowHideZipDiv() {
+        var ddlLoc = document.getElementById("sourceLocationTypeSelect");
+        var dvZip = document.getElementById("zipcodeDiv");
+        var dvLat = document.getElementById("latitudeDiv");
+        dvZip.style.display = ddlLoc.value == "zip" ? "block" : "none";
+        dvLat.style.display = ddlLoc.value == "latitude" ? "block" : "none";
+    }
+
+    function CheckMagnitude(checkboxElem) 
+    {
+        var dvMag = document.getElementById("magDiv");
+        if (checkboxElem.checked) {
+            dvMag.style.display = "block";
+        } else {
+            dvMag.style.display = "none";
+        }
+    }
+
+    function CheckDays(checkboxElem) 
+    {
+        var dvDays = document.getElementById("daysDiv");
+        if (checkboxElem.checked) {
+            dvDays.style.display = "block";
+        } else {
+            dvDays.style.display = "none";
+        }
+    }
+    
+
+    function CheckDistance(checkboxElem) 
+    {
+        var dvDistance = document.getElementById("distanceDiv");
+        if (checkboxElem.checked) {
+            dvDistance.style.display = "block";
+        } else {
+            dvDistance.style.display = "none";
+        }
+    }
+
+    function CheckTime(checkboxElem) 
+    {
+        var dvTime = document.getElementById("timeDiv");
+        if (checkboxElem.checked) {
+            dvTime.style.display = "block";
+        } else {
+            dvTime.style.display = "none";
+        }
+    }
+
+    function CheckDate(checkboxElem) 
+    {
+        var dvDate = document.getElementById("dateDiv");
+        if (checkboxElem.checked) {
+            dvDate.style.display = "block";
+        } else {
+            dvDate.style.display = "none";
+        }
+    }
+    
+    function CheckDayofWeek(checkboxElem) 
+    {
+        var dvDay = document.getElementById("weekDayDiv");
+        if (checkboxElem.checked) {
+            dvDay.style.display = "block";
+        } else {
+            dvDay.style.display = "none";
+        }
+    }
+
+    
+
+</script>
+
+{% endblock %}
+
+{% block content %}
+    <h1>{% block title %} Filter Data for Specific values   {% endblock %}</h1>
+    <label style="color: red;">{{ errorMessage}}</label>
+   
+    <form id="filter_criteria" action="/filter_criteria" method="POST">
+        <table>
+            <tr>
+                <td>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="magnitudeCheckbox" name="magnitudeCheckbox"  onchange="CheckMagnitude(this)" /> Magnitude
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="magDiv" style="display: none;">
+                                    <table>
+                                        <tr>
+                                            <td style="width: 100px;">
+                                                Magnitude 
+                                            </td>
+                                            <td>
+                                                <select name="magnitudeRelationSelect" id="magnitudeRelationSelect" style="width: 150px;" onchange = "ShowHideMagDiv()" data-required_elem_id="magnitudeValueTextbox"  data-required_if_value ="between">
+                                                    <option value="=">=</option>
+                                                    <option value=">">></option>
+                                                    <option value="<"><</option>
+                                                    <option value=">=">>=</option>
+                                                    <option value="<="><=</option>
+                                                    <option value="between">is in range</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <div id="magValueDiv" style="display: block">
+                                                    <input type="number"  name="magnitudeValueTextbox" id="magnitudeValueTextbox">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="magRangeDiv" style="display: none">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                From :  <input type="number" name="magFromText" id="magFromText">
+                                                            </td>
+                                                            <td>
+                                                                To :  <input type="number" name="magToText" id="magToText">
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <hr>
+                    
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="daysCheckbox" name="daysCheckbox"  onchange="CheckDays(this)" /> In last __ Days/Weeks/Months
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="daysDiv" style="display: none;">
+                                    <table>
+                                        <tr>
+                                            <td style="width: 100px;">
+                                                in last 
+                                            </td>
+                                            <td style="width: 250px;">
+                                                <input type="number"  name="daysTextbox" id="daysTextbox">
+                                            </td>
+                                            <td style="width: 100px;">
+                                                <select name="daysSelect" id="daysSelect" style="width: 150px;">
+                                                    <option value="days">day/days</option>
+                                                    <option value="weeks">week/weeks</option>
+                                                    <option value="months">month/months</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <hr>
+
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="distanceCheckbox" name="distanceCheckbox"  onchange="CheckDistance(this)" /> Distance
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="distanceDiv" style="display: none;">
+                                    <table>
+                                        <tr>
+                                            <td style="width: 150px;">
+                                                <select name="distanceRelationSelect" id="distanceRelationSelect" style="width: 100px;">
+                                                    <option value="=">=</option>
+                                                    <option value=">">></option>
+                                                    <option value="<"><</option>
+                                                    <option value=">=">>=</option>
+                                                    <option value="<="><=</option>
+                                                </select>
+                                            </td>
+                                            <td style="width: 100px;">
+                                                <input type="number"  name="distanceTextbox" id="distanceTextbox"> 
+                                            </td>
+                                            <td style="width: 200px;padding-left: 50px;">
+                                                <select name="distanceMeasureSelect" id="distanceMeasureSelect" style="width: 100px;">
+                                                    <option value="Select">Select</option>
+                                                    <option value="miles">miles</option>
+                                                    <option value="km">km</option>
+                                                </select>
+                                            </td>
+                                            <td style="width: 200px;padding-left: 20px;">
+                                                distance from my 
+                                            </td>
+                                            <td>
+                                                <select name="sourceLocationTypeSelect" id="sourceLocationTypeSelect" style="width: 150px;" onchange = "ShowHideZipDiv()">
+                                                    <option value="Select">Select</option>
+                                                    <option value="zip">Zipcode</option>
+                                                    <option value="latitude">Latitude-Longitude</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <div id="zipcodeDiv" style="display: none">
+                                                    Zipcode :   <input type="text" name="zipCodeTextBox" id="zipCodeTextBox">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div id="latitudeDiv" style="display: none">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                Latitude :  <input type="text" name="latitudeTextBox" id="latitudeTextBox">
+                                                            </td>
+                                                            <td>
+                                                                Longitude :  <input type="text" name="longitudeTextBox" id="longitudeTextBox">
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <hr>
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="timeCheckbox" name="timeCheckbox"  onchange="CheckTime(this)" /> Between Time range
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="timeDiv" style="display: none;">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                During Time slots  
+                                            </td>
+                                            <td>
+                                            Starting from : 
+                                            <input type="time" id="startTimeText"  name="startTimeText" value ="09:30:00"/>
+                                            
+                                            </td>
+                                            <td>
+                                                till :
+                                            <input type="time" id="endTimeText"  name="endTimeText" value ="05:30:00"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <hr>
+
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="dateCheckbox" name="dateCheckbox"  onchange="CheckDate(this)" /> Between Date range
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="dateDiv" style="display: none;">
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                Date 
+                                            </td>
+                                            <td>
+
+                                            </td>
+                                            <td>
+                                                Starting from : 
+                                        
+                                            </td>
+                                            <td>
+                                                <input type="date" id="startDateText"  name="startDateText" value="02/20/2020"/>
+                                            </td>
+                                            <td>
+                                                till : 
+                                            
+                                            </td>
+                                            <td>
+                                                <input type="date" id="endDateText"  name="endDateText" value="02/20/2020"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <hr>
+
+
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="checkbox" id="weekDayCheckbox" name="weekDayCheckbox"  onchange="CheckDayofWeek(this)" /> Days of the Week
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div id="weekDayDiv" style="display: none;">
+                                    <table>
+                                        <tr>
+                                            <td style="width: 100px;">
+                                                <input type="checkbox" id="sunday" name="sunday" /> Sunday
+                                            </td>
+                                            <td style="width: 100px;">
+                                                <input type="checkbox" id="monday" name="monday" /> Monday
+                                            </td>
+                                            <td style="width: 100px;">
+                                                <input type="checkbox" id="tuesday" name="tuesday" /> Tuesday
+                                            </td>
+                                            <td style="width: 100px;">
+                                                <input type="checkbox" id="wednesday" name="wednesday" /> Wednesday
+                                            </td>
+                                            <td style="width: 100px;">
+                                                <input type="checkbox" id="thrusday" name="thrusday" /> Thrusday
+                                            </td>
+                                            <td style="width: 100px;">
+                                                <input type="checkbox" id="friday" name="friday" /> Friday
+                                            </td>
+                                            <td style="width: 100px;">
+                                                <input type="checkbox" id="saturday" name="saturday" /> Saturday
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    
+                    <hr>
+
+                    <table>
+                        <tr>
+                            <td style="width: 180px;">
+                                Select Chart Type  : 
+                             </td>
+                             <td style="width: 250px;">
+                                 <select name="chartSelect" id="chartSelect" style="width: 200px;">
+                                     <option value="pi">Pi-Chart</option>
+                                     <option value="line">Line Chart</option>
+                                     <option value="hBar">Horizontal Bar Chart</option>
+                                     <option value="vBar">Vertical Bar  Chart</option>
+                                     <option value="point">Scattered (Point) Chart</option>
+                                 </select>
+                             </td>
+                            <td style="width: 100px;">
+                               Select X-axis : 
+                            </td>
+                            <td style="width: 250px;">
+                                <select name="xSelect" id="xSelect" style="width: 200px;">
+                                    <option value="time">time</option>
+                                    <option value="latitude">latitude</option>
+                                    <option value="longitude">longitude</option>
+                                    <option value="depth">depth</option>
+                                    <option value="mag">magnitude</option>
+                                    <option value="magType">magType</option>
+                                    <option value="nst">nst</option>
+                                    <option value="gap">gap</option>
+                                    <option value="dmin">dmin</option>
+                                    <option value="rms">rms</option>
+                                    <option value="net">net</option>
+                                    <option value="id">id</option>
+                                    <option value="updated">updated</option>
+                                    <option value="place">place</option>
+                                    <option value="type">type</option>
+                                    <option value="horizontalError">horizontalError</option>
+                                    <option value="depthError">depthError</option>
+                                    <option value="magError">magError</option>
+                                    <option value="magNst">magNst</option>
+                                    <option value="status">status</option>
+                                    <option value="locationSource">locationSource</option>
+                                    <option value="magSource">magSource</option>
+                                </select>
+                            </td>
+                            <td style="width: 100px;">
+                                Select Y-axis : 
+                             </td>
+                            <td style="width: 250px;">
+                                <select name="ySelect" id="ySelect" style="width: 200px;">
+                                    <option value="time">time</option>
+                                    <option value="latitude">latitude</option>
+                                    <option value="longitude">longitude</option>
+                                    <option value="depth">depth</option>
+                                    <option value="mag">magnitude</option>
+                                    <option value="magType">magType</option>
+                                    <option value="nst">nst</option>
+                                    <option value="gap">gap</option>
+                                    <option value="dmin">dmin</option>
+                                    <option value="rms">rms</option>
+                                    <option value="net">net</option>
+                                    <option value="id">id</option>
+                                    <option value="updated">updated</option>
+                                    <option value="place">place</option>
+                                    <option value="type">type</option>
+                                    <option value="horizontalError">horizontalError</option>
+                                    <option value="depthError">depthError</option>
+                                    <option value="magError">magError</option>
+                                    <option value="magNst">magNst</option>
+                                    <option value="status">status</option>
+                                    <option value="locationSource">locationSource</option>
+                                    <option value="magSource">magSource</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                  
+                    <hr>
+                  
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="submit" name="search" id="search" value="Search">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+ 
+{% endblock%}
