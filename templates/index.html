@@ -1,24 +1,77 @@
 {% extends 'base.html' %}
 
+{% block title %} Home {% endblock %}
 
+{% block styles %} 
+<link rel="stylesheet" href="{{ url_for('static', filename='css//newsCards.css') }}">
+{% endblock %}
 
 {% block content %}
 
-    <table>
-    <tr>
-        <td>
-            <h1>
-                CSE 6331 : Cloud Computing -  Quiz 3 , Data Visulization using D3js 
-            </h1>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <h2>
-                Ankita Ramjibhai Patel  1001790796
-            </h2>
-        </td>
-    </tr>
-    </table>
+    
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <img src="{{url_for('static', filename='Hermes.png')}}" align="middle" />
+    <p style="text-align: justify;">
+        The Software Engineering Research Group supervised by Dr. Jeff Lei is part of Software Engineering Research Center (SERC) in the Department of Computer Science and Engineering (CSE) at the University of Texas at Arlington (UTA). Our group conducts cutting-edge research in various areas of software engineering, including software design, specification, analysis, verification, and testing.
+    </p>
+    <!-- News Cards -->
+    <div class="row">
+        <div class="col-lg-3 col-sm-6">
+            <div class="card-box bg-blue">
+                <div class="inner">
+                    <h3> 13436 </h3>
+                    <p> Student Strength </p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                </div>
+                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-sm-6">
+            <div class="card-box bg-green">
+                <div class="inner">
+                    <h3> ₹185358 </h3>
+                    <p> Today’s Collection </p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-money" aria-hidden="true"></i>
+                </div>
+                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card-box bg-orange">
+                <div class="inner">
+                    <h3> 5464 </h3>
+                    <p> New Admissions </p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                </div>
+                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <div class="card-box bg-red">
+                <div class="inner">
+                    <h3> 723 </h3>
+                    <p> Faculty Strength </p>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-users"></i>
+                </div>
+                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+
 {% endblock %}
 
