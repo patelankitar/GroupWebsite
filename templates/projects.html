@@ -3,6 +3,56 @@
 {% block title %} Projects {% endblock %}
 
 {% block content %}
-Projects
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+       $('#projectsDataTable').DataTable( {
+        "paging":   false,
+        "ordering": false,
+        "info":     false
+       } );
+   } );
+   </script>
+   
+   <div class="row bootstrap snippets bootdeys">
+       <div class="col-md-9 col-sm-7">
+           <h2 style="color:darkgreen;">ACTIVE PROJECTS</h2>
+       </div>
+   </div>
+   
+   <hr/>
+   
+   <table id="projectsDataTable" class="display" style="width:100%">
+       <thead>
+           <tr>
+               <th>Project</th>
+               <th>Contact Person</th>
+               <th>Paper | Tools </th>
+               <th></th>Project Website | Related work</th>
+           </tr>
+       </thead>
+       <tbody>
+           {% for row in projectList %}
+           <tr>
+               <td>{{row[0]}}</td>
+               <td>{{row[1]}}</td>
+               <td>
+                   {% if row[3]|length %}
+                       <a href="row[3]" target="_blank">{{row[2]}}</a>
+                   {% else %}
+                       {{row[2]}}
+                   {% endif %}
+               </td>
+               <td>
+                {% if row[4]|length %}
+                    <a href="row[4]" target="_blank">Project Website</a>
+                {% endif %}
+            </td>
+           </tr>
+           {% endfor %}
+       </tbody>
+       
+   </table>
 
 {% endblock %}

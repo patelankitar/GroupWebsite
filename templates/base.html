@@ -4,17 +4,26 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
+    <title>{% block title %} {% endblock %}</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css//style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css//people.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css//newsCards.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css//newsPage.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/sandstone/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"> 
     
-    <title>{% block title %} {% endblock %}</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
-    <script type="text/javascript"></script>
-    {% block scripts %} {% endblock %}</script>
     
+    <!-- Below CSS and Script is for the Data Table for Papers to Search and Sort functionality  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <script type="text/javascript"  src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css//home_slider.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts//home_slider.js') }}"></script>
+    
+
   </head>
   <body>
     <table style="text-decoration: darkgray;">

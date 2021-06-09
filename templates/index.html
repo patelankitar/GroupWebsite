@@ -2,72 +2,162 @@
 
 {% block title %} Home {% endblock %}
 
-{% block styles %} 
-<link rel="stylesheet" href="{{ url_for('static', filename='css//newsCards.css') }}">
-{% endblock %}
 
 {% block content %}
 
-    
-
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
-    <img src="{{url_for('static', filename='Hermes.png')}}" align="middle" />
-    <p style="text-align: justify;">
-        The Software Engineering Research Group supervised by Dr. Jeff Lei is part of Software Engineering Research Center (SERC) in the Department of Computer Science and Engineering (CSE) at the University of Texas at Arlington (UTA). Our group conducts cutting-edge research in various areas of software engineering, including software design, specification, analysis, verification, and testing.
+    
+    <!-- Group image and text  -->
+    <!-- <table>
+        <tr>
+            <td>
+                <img src="{{url_for('static', filename='images/Group_Home.jpg')}}" align="middle" style="align-self: center; width: 100%;"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br/>
+                <br/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                
+            </td>
+        </tr>
+    </table> -->
+
+    <!-- Slideshow container -->
+        <div>
+          <div class="mySlides">
+            <div class="numbertext">1 / 2</div>
+            <img src="{{url_for('static', filename='images/Home_Slider/Group1.jpg')}}" align="middle" style="align-self: center; width: 100%;"/>
+          </div>
+        
+          <div class="mySlides">
+            <div class="numbertext">2 / 2</div>
+            <img src="{{url_for('static', filename='images/Home_Slider/Group2.jpg')}}" align="middle" style="align-self: center; width: 100%;"/>
+          </div>
+            
+          <a class="prev" onclick="plusSlides(-1)">❮</a>
+          <a class="next" onclick="plusSlides(1)">❯</a>
+        
+          <div class="caption-container">
+            <p id="caption"></p>
+          </div>
+        </div>
+
+        <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+          var i;
+          var slides = document.getElementsByClassName("mySlides");
+          var dots = document.getElementsByClassName("demo");
+          var captionText = document.getElementById("caption");
+          if (n > slides.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+          }
+          for (i = 0; i < dots.length; i++) {
+              dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";
+          dots[slideIndex-1].className += " active";
+          captionText.innerHTML = dots[slideIndex-1].alt;
+        }
+        </script>
+
+<div>
+    <br/><br/><br/>
+    <p style="text-align: justify;font-size: large;width: 100%;">
+        The Software Engineering Research Group supervised by Dr. Jeff Lei is part of Software Engineering Research Center (SERC) in the 
+        Department of Computer Science and Engineering (CSE) at the University of Texas at Arlington (UTA). Our group conducts cutting-edge 
+        research in various areas of software engineering, including software design, specification, analysis, verification, and testing.
     </p>
+    <br/><br/><br/>
+</div>
+
     <!-- News Cards -->
+    <table>
+        <tr>
+            <td>
+                <h2>
+                    NEWS | 
+                </h2>
+            </td>
+            <td style="vertical-align:bottom;">
+                <h3>
+                    <a href="{{ url_for('news')}}">more</a>
+                </h3>
+            </td>
+        </tr>
+    </table>
+  
+    
     <div class="row">
         <div class="col-lg-3 col-sm-6">
             <div class="card-box bg-blue">
                 <div class="inner">
-                    <h3> 13436 </h3>
-                    <p> Student Strength </p>
+                    <h3 style="text-align: left;">{{news[1][0]}}</h3>
+                    <p style="text-align: justify;"> {{news[1][1]}} </p>
                 </div>
                 <div class="icon">
-                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                    <i class="fa fa-trophy" aria-hidden="true"></i>
                 </div>
-                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                
             </div>
         </div>
 
         <div class="col-lg-3 col-sm-6">
             <div class="card-box bg-green">
-                <div class="inner">
-                    <h3> ₹185358 </h3>
-                    <p> Today’s Collection </p>
+                <div class="inner">                    
+                    <h3 style="text-align: left;">{{news[2][0]}}</h3>
+                    <p style="text-align: justify;"> {{news[2][1]}} </p>
                 </div>
                 <div class="icon">
-                    <i class="fa fa-money" aria-hidden="true"></i>
+                    <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                 </div>
-                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <div class="col-lg-3 col-sm-6">
             <div class="card-box bg-orange">
                 <div class="inner">
-                    <h3> 5464 </h3>
-                    <p> New Admissions </p>
+                    <h3 style="text-align: left;">{{news[3][0]}}</h3>
+                    <p style="text-align: justify;"> {{news[3][1]}} </p>
                 </div>
                 <div class="icon">
-                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                 </div>
-                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+                
             </div>
         </div>
         <div class="col-lg-3 col-sm-6">
             <div class="card-box bg-red">
                 <div class="inner">
-                    <h3> 723 </h3>
-                    <p> Faculty Strength </p>
+                    <h3 style="text-align: left;">{{news[4][0]}}</h3>
+                    <p style="text-align: justify;"> {{news[4][1]}} </p>
                 </div>
                 <div class="icon">
-                    <i class="fa fa-users"></i>
+                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                 </div>
-                <a href="#" class="card-box-footer">View More <i class="fa fa-arrow-circle-right"></i></a>
+               
             </div>
         </div>
+      
     </div>
+
+   
     
 </div>
 

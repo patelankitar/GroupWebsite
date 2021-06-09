@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}  Contact Us {% endblock %}
+
+{% block content %}
+
+
+<script type="text/javascript">
+
+$("#slideshow > div:gt(0)").hide();
+
+setInterval(function() {
+  $('#slideshow > div:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#slideshow');
+}, 3000);
+</script>
+
+
+<style>
+      #slideshow {
+    margin: 80px auto;
+    position: relative;
+    width: 240px;
+    height: 240px;
+    padding: 10px;
+    
+  }
+  
+  #slideshow > div {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+  }
+</style>
+<div id="slideshow">
+    <div>
+      <img src="http://farm6.static.flickr.com/5224/5658667829_2bb7d42a9c_m.jpg">
+    </div>
+    <div>
+      <img src="http://farm6.static.flickr.com/5230/5638093881_a791e4f819_m.jpg">
+    </div>
+ </div>
+ 
+ 
+ 
+ 
+{% endblock %}

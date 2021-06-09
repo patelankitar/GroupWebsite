@@ -4,6 +4,62 @@
 
 {% block content %}
 
-News
+<div class="container">
+
+    <script type="text/javascript">
+        function ShowHideDetailsDiv(id) {
+            var dvDetails = document.getElementById(id);
+            dvDetails.style.display = dvDetails.style.display == "none" ? "block" : "none";
+        }
+    </script>
+    <hr />
+
+    <div class="row ng-scope">
+        <div class="col-md-3 col-md-push-9">
+
+        </div>
+        <div class="col-md-9 col-md-pull-3">
+            {% for row in news %}
+            
+                    <div>
+
+                        <!-- <div class="col-sm-9">
+                            <a href="newsDetails/{{row[3]}}" ><h4 class="search-result-item-heading">{{ row[0] }}</h4></a>
+                            <p class="info">{{ row[1] }}</p>                          
+                        </div> -->
+
+                        <div>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <p class="search-result-item-heading">{{ row[1] }}</p>
+                                    </td>
+                                    <td colspan="3">
+                                        &nbsp;
+
+                                    </td>
+                                    <td>
+                                        <a href="#" onclick="ShowHideDetailsDiv({{row[3]}})"
+                                            style="color: cornflowerblue;">
+                                            <h4 class="search-result-item-heading">{{ row[0] }}</h4>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                   
+                    <div style="padding-left: 90px;width: auto; text-align: justify;display:none;font-size: medium;"
+                        id="{{ row[3] }}">
+                       
+                        <br/><br/> <p>{{ row[2] }}</p>
+                    </div>
+
+            <hr />
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
 {% endblock %}

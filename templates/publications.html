@@ -3,6 +3,57 @@
 {% block title %} Papers {% endblock %}
 
 {% block content %}
-Papers
+
+
+<script type="text/javascript">
+ $(document).ready(function() {
+    $('#papersDataTable').DataTable( {
+        "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]]
+    } );
+} );
+</script>
+
+<div class="row bootstrap snippets bootdeys">
+    <div class="col-md-9 col-sm-7">
+        <h2 style="color: cornflowerblue;">PAPERS</h2>
+    </div>
+</div>
+
+<hr/>
+
+<table id="papersDataTable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Conference/Journal</th>
+            <th>Year</th>
+            <th>Authors</th>
+            <th>Title (link)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in papersList %}
+        <tr>
+            <td>{{row[0]}}</td>
+            <td>{{row[1]}}</td>
+            <td>{{row[2]}}</td>
+            <td>
+                {% if row[4]|length %}
+                    <a href="row[4]" target="_blank">{{row[3]}}</a>
+                {% else %}
+                    {{row[3]}}
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Conference/Journal</th>
+            <th>Year</th>
+            <th>Authors</th>
+            <th>Title (link)</th>
+        </tr>
+    </tfoot>
+</table>
 
 {% endblock %}

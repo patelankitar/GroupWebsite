@@ -19,6 +19,7 @@ body{
     }
     .card-box .inner {
         padding: 5px 10px 0 10px;
+        height: 100px;
     }
     .card-box h3 {
         font-size: 27px;
