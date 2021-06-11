@@ -81,8 +81,22 @@ def people():
             phdList = []
             for row in data : 
                 phdList.append(row)
-        print(phdList)
-        return render_template('people.html',phdList=phdList)
+        
+        with open(app.root_path + '/data/mastersStudents.csv') as csvFile:
+            data = csv.reader(csvFile, delimiter='|')
+            next(data)
+            mastersList = []
+            for row in data : 
+                mastersList.append(row)
+
+        with open(app.root_path + '/data/ugStudents.csv') as csvFile:
+            data = csv.reader(csvFile, delimiter='|')
+            next(data)
+            ugList = []
+            for row in data : 
+                ugList.append(row)
+
+        return render_template('people.html',phdList=phdList,mastersList=mastersList,ugList=ugList)
 
 #Alumni
 @app.route("/alumni", methods=['POST', 'GET'])

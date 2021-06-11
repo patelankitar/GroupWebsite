@@ -3,7 +3,7 @@
 {% block title %} People {% endblock %}
 
 {% block content %}
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+
 <div class="container">
     <div class="row bootstrap snippets bootdeys">
         <div class="col-md-9 col-sm-7">
@@ -19,31 +19,33 @@
         </div>
     </div>
 
-    <div class="column" id="peoplecontent">
-        <div class="member-entry">
-            <p>
-                <font face="Arial Black" size="4" color="blue">Jeff Lei</font>
-                <font face="Arial Black" size="4" color="black"> | <a
-                        href="https://mentis.uta.edu/explore/profile/yu-lei"> Homepage</a></font>
-                <font face="Arial Black" size="4" color="black"> | <a href="#"> Resume</a></font>
-            </p>
+     <!-- Dr. Lei's Profile  -->
+    <div class="member-entry">
+        <p>
+            <font face="Arial Black" size="4" color="blue">Jeff Lei</font>
+            <font face="Arial Black" size="4" color="black"> | 
+                <a href="https://mentis.uta.edu/explore/profile/yu-lei"> Homepage</a></font>
+            <font face="Arial Black" size="4" color="black"> | <a href="#"> Resume</a></font>
+        </p>
 
-            <a href="#" class="member-img">
-                <img src="{{url_for('static', filename='images/DrLei.jpg')}}" class="img-rounded">
-            </a>
-            <div class="member-details">
-                <div class="row info-list">
-
-                    Dr. Jeff Lei is a Professor in Department of Computer Science and Engineering at the University of
+        
+        <img src="{{url_for('static', filename='images/DrLei.jpg')}}" class="img-rounded member-img">
+        
+        <div class="member-details">
+           
+            <div class="row info-list">
+                <p style="text-align: justify;">
+                Dr. Jeff Lei is a Professor in Department of Computer Science and Engineering at the University of
                     Texas, Arlington where he teaches SOFTWARE TESTING & MAINTENANCE. His research
                     relates to Software Engineering, Software Security, and Testing AI-Based Systems.
-
-                </div>
+                </p>
             </div>
         </div>
     </div>
 
     <br/><hr/>
+
+    <!-- Ph.D Students -->
     <div class="row bootstrap snippets bootdeys">
         <div class="col-md-9 col-sm-7">
             <h3>Ph.D Students </h3>
@@ -52,9 +54,9 @@
 
     {% for student in phdList %}
     <div class="member-entry">
-        <a href="#" class="member-img">
-            <img src="{{url_for('static', filename='images/PhdStudents/'+student[0])}}" class="img-rounded">
-        </a>
+       
+            <img src="{{url_for('static', filename='images/PhdStudents/'+student[0])}}" class="img-rounded member-img">
+       
         <div class="member-details">
             <table>
                 <tr>
@@ -76,9 +78,9 @@
             </table>
             <div class="row info-list">
                 <div class="col-sm-12">
-
+                    <p style="text-align: justify;">
                     {{student[4]}}
-
+                    </p>
                 </div>
             </div>
         </div>
@@ -87,6 +89,7 @@
 
     <br/><hr/>
 
+    <!-- Masters Students  -->
     {% if mastersList|length %}
 
         <div class="row bootstrap snippets bootdeys">
@@ -97,9 +100,8 @@
 
         {% for student in mastersList %}
         <div class="member-entry">
-            <a href="#" class="member-img">
-                <img src="{{url_for('static', filename='images/PhdStudents/'+student[0])}}" class="img-rounded">
-            </a>
+            <img src="{{url_for('static', filename='images/MastersStudents/'+student[0])}}" class="img-rounded member-img">
+
             <div class="member-details">
                 <table>
                     <tr>
@@ -133,7 +135,9 @@
 
     <br/><hr/>
 
-    {% if undergradList|length %}
+    <!-- Undergraduate Students -->
+
+    {% if ugList|length %}
 
         <div class="row bootstrap snippets bootdeys">
             <div class="col-md-9 col-sm-7">
@@ -141,11 +145,9 @@
             </div>
         </div>
 
-        {% for student in undergradList %}
+        {% for student in ugList %}
         <div class="member-entry">
-            <a href="#" class="member-img">
-                <img src="{{url_for('static', filename='images/PhdStudents/'+student[0])}}" class="img-rounded">
-            </a>
+            <img src="{{url_for('static', filename='images/UGStudents/'+student[0])}}" class="img-rounded member-img">
             <div class="member-details">
                 <table>
                     <tr>

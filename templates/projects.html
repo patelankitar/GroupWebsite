@@ -29,7 +29,7 @@
                <th>Project</th>
                <th>Contact Person</th>
                <th>Paper | Tools </th>
-               <th></th>Project Website | Related work</th>
+               <th>Project Website | Related work</th>
            </tr>
        </thead>
        <tbody>
@@ -39,14 +39,14 @@
                <td>{{row[1]}}</td>
                <td>
                    {% if row[3]|length %}
-                       <a href="row[3]" target="_blank">{{row[2]}}</a>
+                       <a href="{{row[3]}}" target="_blank">{{row[2]}}</a>
                    {% else %}
                        {{row[2]}}
                    {% endif %}
                </td>
                <td>
                 {% if row[4]|length %}
-                    <a href="row[4]" target="_blank">Project Website</a>
+                    <a href="{{row[4]}}" target="_blank">Project Website</a>
                 {% endif %}
             </td>
            </tr>
