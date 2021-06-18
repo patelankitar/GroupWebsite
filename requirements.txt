@@ -1,9 +1,1 @@
-pyodbc
-geopy
-geopandas
-redis
 flask
-pandas 
-sklearn
-seaborn 
-matplotlib

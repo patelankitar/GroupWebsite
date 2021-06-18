@@ -1,12 +1,5 @@
-import numpy as np
-import pandas as pd
 import csv
-
 from flask import Flask, render_template , request
-from pandas import DataFrame
-import os.path
-from os import path
-import json
 
 app = Flask(__name__)
 
@@ -16,18 +9,21 @@ def index():
     if request.method == 'POST':
         return "This is index post method!"
     else:
+        sliderImageList = []
+        news = []
+
         with open(app.root_path + '/data/Home_news.csv') as csvFile:
             data = csv.reader(csvFile, delimiter='|')
             news = []
             for row in data : 
                 news.append(row)
-        
-        with open(app.root_path + '/data/Home_Slider.csv') as csvFile:
-            data2 = csv.reader(csvFile, delimiter='|')
-            next(data2)
-            sliderImageList = []
-            for row2 in data2 : 
-                sliderImageList.append(row2)
+
+        # with open(app.root_path + '/data/Home_Slider.csv') as csvFile:
+        #     data2 = csv.reader(csvFile, delimiter='|')
+        #     next(data2)
+        #     sliderImageList = []
+        #     for row2 in data2 : 
+        #         sliderImageList.append(row2)
         #print(sliderImageList)
         return render_template('index.html', news=news,sliderImageList=sliderImageList)
 
