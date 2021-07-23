@@ -117,6 +117,20 @@ def publications():
         #print(papersList)
         return render_template('publications.html',papersList=papersList)
 
+@app.route("/papersList", methods=['POST', 'GET'])
+def papersList():
+    if request.method == 'POST':
+        return "This is index post method!"
+    else:
+        with open(app.root_path + '/data/papers.csv') as csvFile:
+            data = csv.reader(csvFile, delimiter='|')
+            next(data)
+            papersList = []
+            for row in data : 
+                papersList.append(row)
+        #print(papersList)
+        return render_template('papersList.html',papersList=papersList)
+
 #Projects
 @app.route("/projects", methods=['POST', 'GET'])
 def projects():

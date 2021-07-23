@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %} Papers {% endblock %}
+
+{% block content %}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+       $('#papersDataTable').DataTable( {
+           "lengthMenu": [[15, 25, 50, -1], [15, 25, 50, "All"]],
+           "paging":   false,
+       } );
+   } );
+   </script>
+
+<div class="row bootstrap snippets bootdeys">
+    <div class="col-md-9 col-sm-7">
+        <h2 style="color: cornflowerblue;">PAPERS</h2>
+    </div>
+</div>
+
+<hr/>
+
+{% for row in papersList %}
+<table>
+    
+    <tr>
+        <td  colspan="2">
+            {% if row[1]|length %}
+               <h4> <a href="row[1]" target="_blank" style="color:darkblue;">{{row[0]}}</a></h4>
+            {% else %}
+            <h3>  {{row[0]}}</h3>
+            {% endif %}
+        </td>
+    </tr>
+    <tr>
+        <td  colspan="2">{{row[2]}}</td>
+    </tr>
+    <tr>
+        <td >{{row[4]}}&emsp;</td>
+        <td >{{row[3]}}</td>
+        
+    </tr>
+</table>
+
+<br/><br/>
+{% endfor %} 
+
+{% endblock %}

@@ -1,3 +1,4 @@
-conference,year,authors,title,link
-ICST|2020|ABC|Test|https://arxiv.org/pdf/2105.12195.pdf
-ICST|2020|ABC|Test|
+title,link,authors,conference,year
+A Combinatorial Testing-Based Approach to Fault Localization|https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8438933|Ghandehari, Laleh Sh, Yu Lei, Raghu Kacker, Richard Kuhn, Tao Xie, and David Kung|IEEE Transactions on Software Engineering|2018
+A Combinatorial Approach to Testing Deep Neural Network-based Autonomous Driving Systems|https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9440193|Jaganmohan Chandrasekaran, Yu Lei, Raghu Kacker, D Richard Kuhn|IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)|2021
+A Combinatorial Approach to Explaining Image Classifiers|https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9440187|Jaganmohan Chandrasekaran, Yu Lei, Raghu Kacker, D Richard Kuhn|IEEE International Conference on Software Testing, Verification and Validation Workshops (ICSTW)|2021
